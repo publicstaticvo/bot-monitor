@@ -15,6 +15,16 @@ npm run serve
 npm run build
 ```
 
+### Compile Vue and ES6 files
+```
+webpack
+```
+
+### Run your project
+```
+npm run dev
+```
+
 ### Run your tests
 ```
 npm run test
