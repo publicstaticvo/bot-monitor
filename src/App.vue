@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" v-cloak>
+    <menubar></menubar>
+    <page></page>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  import Menubar from "./components/menubar.vue";
+  import Page from "./components/Page.vue";
+  
+  export default {
+    name: 'app',
+    components: {Page, Menubar}
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  [v-cloak]{
+    display: none;
+  }
+  .invisible{
+    display: none;
+  }
+  #app{
+    font-family: 'Roboto', sans-serif;
+  }
 </style>
