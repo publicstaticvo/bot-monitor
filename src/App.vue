@@ -1,17 +1,16 @@
 <template>
   <div id="app" v-cloak>
     <menubar></menubar>
-    <page></page>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import Menubar from "./components/menubar.vue";
-  import Page from "./components/Page.vue";
+  import menubar from "./components/menubar.vue";
   
   export default {
     name: 'app',
-    components: {Page, Menubar}
+    components: {menubar,}
   }
 </script>
 

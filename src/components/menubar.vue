@@ -1,17 +1,17 @@
 <template>
 	<div class="menubar" v-cloak>
 		<div class="menu-wrapper" v-cloak>
-			<logo></logo>
+			<detector-link></detector-link>
 		</div>
 	</div>
 </template>
 
 <script>
-	import logo from "./logo.vue";
+	import detectorLink from "./detectorLink.vue";
 	//
 	export default {
 		name: "menubar",
-		components: {logo,},
+		components: {detectorLink,},
 		methods: {
 		},
 	}
@@ -24,6 +24,7 @@
 	.menubar {
 		width: 100%;
 		height: 60px;
+		top: 0;
 		background-color: #f0f0f0;
 		margin-right: auto;
 		margin-left: auto;

@@ -1,12 +1,12 @@
 <template>
 	<div class='tm'>
-		<a href='#'>Detector</a>
+		<router-link to="/detect">Detector</router-link>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: "logo"
+		name: "detector-link",
 	}
 </script>
 
