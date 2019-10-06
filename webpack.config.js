@@ -37,6 +37,10 @@ var config = {
 					fallback: 'style-loader',
 				})
 			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)$/,
+				loader: 'file-loader',
+			},
 		],
 	},
 	plugins: [
