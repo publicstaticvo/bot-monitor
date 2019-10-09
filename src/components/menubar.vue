@@ -1,7 +1,12 @@
 <template>
 	<div class="menubar" v-cloak>
 		<div class="menu-wrapper" v-cloak>
-			<detector-link></detector-link>
+			<div class="tm">
+				<router-link to="/detect">Detector</router-link>
+			</div>
+			<div class="tm">
+				<router-link to="/generate">Generator</router-link>
+			</div>
 		</div>
 	</div>
 </template>
@@ -17,7 +22,7 @@
 	}
 </script>
 
-<style scoped>
+<style>
 	[v-cloak]{
 		display: none;
 	}
@@ -33,6 +38,19 @@
 		width: 70%;
 		height: 100%;
 		margin: auto;
+	}
+	.tm{
+		width: 150px;
+		float: left;
+		margin: auto 0;
+		display: flex;
+		font-size: 20px;
+	}
+	.tm a{
+		padding: 15px;
+		text-align: center;
+		color: #333;
+		text-decoration: none;
 	}
 	a:link {
 		text-decoration: none;

@@ -2,7 +2,9 @@ import Vue from 'vue';
 import App from './App.vue';
 import ElementUI from 'element-ui';
 import VueRouter from "vue-router";
-import detector from "./components/detector.vue";
+import detectorPage from "./components/detectorPage.vue";
+import generatorPage from "./components/generatorPage.vue";
+import mainPage from "./components/mainPage.vue";
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
@@ -12,7 +14,15 @@ const Routers = new VueRouter({
   routes:[
     {
       path: '/detect',
-      component: detector,
+      component: detectorPage,
+    },
+    {
+      path: '/generate',
+      component: generatorPage,
+    },
+    {
+      path: '*',
+      component: mainPage,
     },
   ],
 });

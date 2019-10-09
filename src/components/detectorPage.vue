@@ -23,7 +23,7 @@
 	import axios from 'axios';
 	
 	export default {
-		name: "Page",
+		name: "detectorPage",
 		data: function () {
 			return {
 				inputName: "",
@@ -41,7 +41,10 @@
 			detect: function () {
 				let js = JSON.parse(this.inputName);
 				axios.post("http://122.51.14.253:8080/bot_or_not", js).then( res => {
-					if(res.data['code'] !== 0)
+					console.log(res.status);
+					console.log(res.data['msg']);
+					console.log(res.data['data']['msg']);
+					if(res.data['code'] === 0)
 					{
 						var time_str=res.data['detail']['created_at'].split(' ');
 						let months = {'Jan': "01",'Feb': "02",'Mar': "03",'Apr': "04","May": "05",'Jun': "06",
@@ -55,32 +58,22 @@
 							scores: '-' //To be changed
 						});
 					}
-					else alert("Error: ["+res.data['code']+"]"+res.data['msg']);
+					else alert("Error: ["+res.status+"]"+res.msg);
 					this.inputName='';
 				}).catch(error => {
 					alert(error);
-					var time_str="Fri Mar 18 11:11:05 +0000 2011".split(' ');
-					let months = {'Jan': "01",'Feb': "02",'Mar': "03",'Apr': "04","May": "05",'Jun': "06",
-						'Jul': "07",'Aug': "08",'Sept': "09",'Oct': "10",'Nov': "11",'Dec': "12",};
-					this.userStatusList.push({
-						num: this.userStatusList.length+1,
-						name: '王小虎',
-						screen_name: '王小虎',
-						time: time_str[5]+"-"+months[time_str[1]]+"-"+time_str[2],
-						bot: '1516',
-						scores: '-'
-					});
-					this.inputName='';
 				});
 			}
 		},
 	}
 </script>
 
-<style scoped>
+<style>
 	.page-wrapper{
 		width: 70%;
-		margin: 30px auto;
+		margin: 15px auto;
+		height: 900px;
+		background-color: #f6f6f6;
 	}
 	.input-wrapper{
 		width: 60%;
@@ -91,7 +84,6 @@
 		padding: 0 10px;
 	}
 	.data-wrapper{
-		width: 100%;
-		margin: 15px 0;
+		margin: 15px;
 	}
 </style>
