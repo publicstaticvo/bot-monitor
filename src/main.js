@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import ElementUI from 'element-ui';
 import VueRouter from "vue-router";
-import indexPage from "@/components/indexPage.vue";
+import indexPage from "./components/indexPage.vue";
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
@@ -20,5 +20,5 @@ const Routers = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  //router: Routers,
+  router: Routers,
 }).$mount('#app');

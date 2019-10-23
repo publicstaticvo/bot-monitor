@@ -9,8 +9,6 @@
 <script>
 	export default {
 		name: "menubar",
-		methods: {
-		},
 	}
 </script>
 
