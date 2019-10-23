@@ -19,7 +19,7 @@
 	import axios from 'axios';
 	
 	export default {
-		name: "generatorPage",
+		name: "IndexPage",
 		data: function () {
 			return {
 				date: '',
