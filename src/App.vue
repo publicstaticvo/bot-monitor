@@ -1,8 +1,9 @@
 <template>
-  <div id="app" v-cloak>
-    <menubar></menubar>
-    <router-view></router-view>
-  </div>
+  <el-container>
+    <el-header><menubar></menubar></el-header>
+    <el-main><router-view></router-view></el-main>
+    <el-footer></el-footer>
+  </el-container>
 </template>
 
 <script>
@@ -23,5 +24,9 @@
   }
   #app{
     font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+  }
+  a {
+    text-decoration: none;
   }
 </style>
