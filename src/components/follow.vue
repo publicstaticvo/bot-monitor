@@ -34,7 +34,7 @@
         axios.defaults.headers.post['Content-Type'] = 'application/json';
         axios.post("http://166.111.5.228:5010/to_follow/get_random", { num: this.num}).then(
           response => {
-            axios.post("http://166.111.5.228:5010/to_follow/beta", response).then(
+            axios.post("http://166.111.5.228:5010/to_follow/beta", response.data).then(
               response => {
                 let scores = response.data["score"];
                 let labels = response.data["label"];
