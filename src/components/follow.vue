@@ -11,7 +11,7 @@
       <el-table-column prop="followed" label="Followed" min-width="15%" align="center"></el-table-column>
       <el-table-column label="Follow" min-width="20%" align="center">
         <template slot-scope="scope">
-          <el-button :type="state" :hidden="scope.row.label">FOLLOW</el-button>
+          <el-button :type="state" v-show="scope.row.label">FOLLOW</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -34,18 +34,17 @@
         axios.defaults.headers.post['Content-Type'] = 'application/json';
         axios.post("http://166.111.5.228:5010/to_follow/get_random", { num: this.num}).then(
           response => {
-            axios.post("http://166.111.5.228:5010/to_follow/beta", response.data).then(
+            axios.post("http://166.111.5.228:5010/to_follow/beta", response.data.data).then(
               response => {
-                let scores = response.data["score"];
-                let labels = response.data["label"];
+                let scores = response.data.data.score;
+                let labels = response.data.data.label;
                 for(let key in scores) {
                   this.userData.push({
                     name: key,
                     score: scores[key],
-                    label: (labels[key] !== 1.0),
+                    label: (labels[key] === 1.0),
                   })
                 }
-                this.$route.go(0);
               }
             );
           }).catch(_ => {
