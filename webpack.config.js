@@ -3,6 +3,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 var config = {
+	devtool: "source-map",
 	entry: {
 		main: './src/main',
 	},

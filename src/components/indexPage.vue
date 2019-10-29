@@ -1,14 +1,14 @@
 <template>
 	<div class="page-wrapper">
-		<div class="data-wrapper">
-			<el-table :data="bots" style="width: 90%">
-				<el-table-column fixed="left" prop="id" label="" min-width="3%" align="center"></el-table-column>
-				<el-table-column prop="name" label="username" min-width="20%" align="center"></el-table-column>
-				<el-table-column prop="screen_name" label="screen name" min-width="20%" align="center"></el-table-column>
-				<el-table-column prop="time" label="create date" min-width="20%" align="center"></el-table-column>
-				<el-table-column prop="bot" label="bot score" min-width="8%" align="center"></el-table-column>
+		<div class="data-wrapper" style="width: 90%; margin: 20px 5%">
+			<el-table :data="bots">
+				<el-table-column prop="id" min-width="5%" align="center"></el-table-column>
+				<el-table-column prop="name" label="username" min-width="25%" align="center"></el-table-column>
+				<el-table-column prop="screen_name" label="screen name" min-width="25%" align="center"></el-table-column>
+				<el-table-column prop="time" label="create date" min-width="15%" align="center"></el-table-column>
+				<el-table-column prop="bot" label="bot score" min-width="10%" align="center"></el-table-column>
 				<el-table-column prop="scores" label="scores" min-width="10%" align="center"></el-table-column>
-				<el-table-column fixed="right" label="操作" min-width="5%" align="center">
+				<el-table-column label="操作" min-width="10%" align="center">
 					<template slot-scope="scope">
 						<router-link :to="link(scope.row.name)" tag="el-button">Mainpage</router-link>
 					</template>
@@ -28,8 +28,8 @@
 				bots: [
 					{
 						id: 1,
-						name: "Brian Ngemu",
-						screen_name: "Brian Ngemu",
+						name: "dogcatbirdspet",
+						screen_name: "dogcatbirdspe",
 						time: "2011-10-17 19:55:38",
 						bot: 0,
 						scores: 0.12,

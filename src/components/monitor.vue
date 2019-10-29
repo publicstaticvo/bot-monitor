@@ -7,10 +7,14 @@
       </a>
     </el-header>
     <el-main>
-      <el-tabs>
+      <el-tabs :v-model="defaultActive">
+        <el-tab-pane label="monitor" name="first">
+          <h1>Bot Score: 0.0</h1>
+          <h2>score: 0.12</h2>
+        </el-tab-pane>
         <el-tab-pane label="Follow" name="second"><follow></follow></el-tab-pane>
         <el-tab-pane label="Forward" name="third"><forward></forward></el-tab-pane>
-        <el-tab-pane label="Origin" name="first"><origin></origin></el-tab-pane>
+        <el-tab-pane label="Origin" name="fourth"><origin></origin></el-tab-pane>
       </el-tabs>
     </el-main>
   </el-container>
@@ -26,13 +30,14 @@
     data() {
       return {
         bot_name: this.$route.params.bot_name,
+        defaultActive: 'first',
       };
     },
   }
 </script>
 
 <style>
-  label {
+  .is-top {
     font-size: 20px !important;
   }
 </style>
