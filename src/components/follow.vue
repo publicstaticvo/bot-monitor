@@ -36,6 +36,7 @@
           response => {
             axios.post("http://166.111.5.228:5010/to_follow/beta", response.data.data).then(
               response => {
+                this.userData = [];
                 let scores = response.data.data.score;
                 let labels = response.data.data.label;
                 for(let key in scores) {
