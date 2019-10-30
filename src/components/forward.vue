@@ -6,11 +6,9 @@
 			<!--el-input-number v-model="newsNumber"></--el-input-number-->
 			<el-button @click="getNews">Get news</el-button>
 		</div>
-		<div class="news-wrapper">
-			<el-input id="news" type="textarea" disabled="true"></el-input>
-		</div>
-		<div class="tweets-wrapper">
-			<el-input id="tweets" type="textarea" disabled="true"></el-input>
+		<div class="content-wrapper">
+			<el-input id="news" v-model="newsContent" type="textarea" disabled="true"></el-input>
+			<el-input id="tweets" v-model="tweetContent" type="textarea" disabled="true"></el-input>
 		</div>
 	</div>
 </template>
@@ -20,56 +18,33 @@
 	
 	export default {
 		name: "forward",
-		data: function () {
+		data() {
 			return {
-				date: '',
-				newsNumber: 1,
-				news: [],
+				date: new Date(),
+				tweetContent: '',
+				newsContent: '',
 				option: {
-					disabledDate: function (time) {
+					disabledDate(time) {
 						return time.getTime() > Date.now();
 					},
-					shortcuts: [{
-						text: '今天',
-						onClick(picker) {
-							picker.$emit('pick', new Date());
-						}
-					}, {
-						text: '昨天',
-						onClick(picker) {
-							const date = new Date();
-							date.setTime(date.getTime() - 3600 * 1000 * 24);
-							picker.$emit('pick', date);
-						}
-					}, {
-						text: '一周前',
-						onClick(picker) {
-							const date = new Date();
-							date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-							picker.$emit('pick', date);
-						}
-					}],
 				}
 			}
 		},
 		methods: {
-			getNews: function () {
-				this.news = [];
-				if(this.newsNumber<=0){
-					alert("请输入正确的新闻数");
-					return false;
-				}
-				this.date.getDate().format('YYYYMMDD');
-				axios.post("http://lab.aminer.cn/eitools/rank/news",{
-					'date_str': this.date.getDate().format('YYYYMMDD'),
-					'news': this.newsNumber
+			getNews() {
+				var date_str = "" + this.date.getFullYear()
+						+ (this.date.getMonth() < 9 ? "0" + (this.date.getMonth() + 1) : (this.date.getMonth() + 1))
+						+ (this.date.getDate() < 10 ? "0" + this.date.getDate()	: this.date.getDate());
+				axios.post("http://166.111.5.228:9010",{
+					"date": date_str,
 				}).then(response => {
-					if(response.status !== 0)
-					{
-						document.getElementById('news').innerText=response.data['news']['cn'][0]['content'];
-						document.getElementById('tweets').innerText="DDL postponed";
-					}
-					else alert("Error: ["+response.status+"]"+response.msg);
+					let responseData = response.data["tweet"];
+					responseData = JSON.parse(responseData);
+					this.newsContent = "PublishTime: " + responseData["publishTime"] + '\n';
+					this.newsContent += "Publisher: " + responseData["publisher"] + '\n    ';
+					this.newsContent += responseData["content"];
+					this.tweetContent = responseData["topic"] + responseData["tweet"];
+					this.tweetContent += "\nOriginURL: " + responseData["relatednewsURL"];
 				}).catch(error => {
 					alert("Post Request " + error);
 				})
