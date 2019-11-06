@@ -8,13 +8,13 @@
     </el-header>
     <el-main>
       <el-tabs :v-model="defaultActive">
-        <el-tab-pane label="monitor" name="first">
+        <el-tab-pane label="monitor" name="0">
           <h1>Bot Score: 0.0</h1>
           <h2>score: 0.12</h2>
         </el-tab-pane>
-        <el-tab-pane label="Follow" name="second"><follow></follow></el-tab-pane>
-        <el-tab-pane label="Forward" name="third"><forward></forward></el-tab-pane>
-        <el-tab-pane label="Origin" name="fourth"><origin></origin></el-tab-pane>
+        <el-tab-pane label="Follow" name="1"><follow></follow></el-tab-pane>
+        <el-tab-pane label="Forward" name="2"><forward></forward></el-tab-pane>
+        <el-tab-pane label="Origin" name="3"><origin></origin></el-tab-pane>
       </el-tabs>
     </el-main>
   </el-container>
@@ -30,14 +30,8 @@
     data() {
       return {
         bot_name: this.$route.params.bot_name,
-        defaultActive: 'first',
+        defaultActive: '0',
       };
     },
   }
 </script>
-
-<style>
-  .is-top {
-    font-size: 20px !important;
-  }
-</style>

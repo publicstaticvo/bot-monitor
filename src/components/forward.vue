@@ -7,8 +7,14 @@
 			<el-button @click="getNews">Get news</el-button>
 		</div>
 		<div class="content-wrapper">
-			<el-input id="news" v-model="newsContent" type="textarea" disabled="true"></el-input>
-			<el-input id="tweets" v-model="tweetContent" type="textarea" disabled="true"></el-input>
+			<el-row :gutter="40">
+				<el-col :span="12" class="col">
+					<el-input type="textarea" v-model="newsContent" class="content" disabled></el-input>
+				</el-col>
+				<el-col :span="12">
+					<el-input type="textarea" v-model="tweetContent" class="content" disabled></el-input>
+				</el-col>
+			</el-row>
 		</div>
 	</div>
 </template>
@@ -35,10 +41,16 @@
 				var date_str = "" + this.date.getFullYear()
 						+ (this.date.getMonth() < 9 ? "0" + (this.date.getMonth() + 1) : (this.date.getMonth() + 1))
 						+ (this.date.getDate() < 10 ? "0" + this.date.getDate()	: this.date.getDate());
-				axios.post("http://166.111.5.228:9010",{
-					"date": date_str,
+				axios.get("http://166.111.5.228:9010",{
+					params: {
+						"date": date_str,
+					}
 				}).then(response => {
 					let responseData = response.data["tweet"];
+					if (responseData === null) {
+						this.$message("No news today!");
+						return;
+					}
 					responseData = JSON.parse(responseData);
 					this.newsContent = "PublishTime: " + responseData["publishTime"] + '\n';
 					this.newsContent += "Publisher: " + responseData["publisher"] + '\n    ';
@@ -46,13 +58,22 @@
 					this.tweetContent = responseData["topic"] + responseData["tweet"];
 					this.tweetContent += "\nOriginURL: " + responseData["relatednewsURL"];
 				}).catch(error => {
-					alert("Post Request " + error);
+					this.$message("Request " + error + "!");
 				})
 			}
 		},
 	}
 </script>
-
-<style scoped>
-
+<style>
+	.col {
+		height: 800px;
+	}
+	.content {
+		height: 800px;
+	}
+	textarea {
+		background-color: #fff !important;
+		height: 800px;
+		color: #333 !important;
+	}
 </style>
