@@ -9,7 +9,7 @@
     "dev": "webpack-dev-server --open --config webpack.config.js"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "core-js": "^2.6.5",
@@ -30,7 +30,7 @@
     "@vue/cli-plugin-eslint": "^3.11.0",
     "@vue/cli-service": "^3.11.0",
     "acorn-walk": "^7.0.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
